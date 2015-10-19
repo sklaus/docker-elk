@@ -2,8 +2,6 @@ elasticsearch:
   build: elasticsearch/
   ports:
     - "9200:9200"
-    - "5001:5001"
-    - "25826:25826/udp"
 logstash:
   image: logstash:latest
   command: logstash -f /etc/logstash/conf.d/logstash.conf
@@ -11,6 +9,8 @@ logstash:
     - ./logstash/config:/etc/logstash/conf.d
   ports:
     - "5000:5000"
+    - "5001:5001"
+    - "25826:25826/udp"
   links:
     - elasticsearch
 kibana:
