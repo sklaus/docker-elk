@@ -4,9 +4,12 @@ elasticsearch:
     - "9200:9200"
 logstash:
   image: logstash:latest
+  environment:
+    - RUBYLIB=/plugins
   command: logstash -f /etc/logstash/conf.d/logstash.conf
   volumes:
     - ./logstash/config:/etc/logstash/conf.d
+    - ./plugins:/plugins
   ports:
     - "5000:5000"
     - "5001:5001"
