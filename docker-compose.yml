@@ -5,11 +5,11 @@ elasticsearch:
 logstash:
   image: logstash:latest
   environment:
-    - RUBYLIB=/plugins
+    - RUBYLIB=/mnt
   command: logstash -f /etc/logstash/conf.d/logstash.conf
   volumes:
     - ./logstash/config:/etc/logstash/conf.d
-    - ./logstash/plugins:/plugins
+    - ./logstash/plugins:/mnt
   ports:
     - "5000:5000"
     - "5001:5001"
