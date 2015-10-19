@@ -9,7 +9,7 @@ logstash:
   command: logstash -f /etc/logstash/conf.d/logstash.conf
   volumes:
     - ./logstash/config:/etc/logstash/conf.d
-    - ./logstash/plugins:/mnt
+    - ./logstash:/mnt
   ports:
     - "5000:5000"
     - "5001:5001"
