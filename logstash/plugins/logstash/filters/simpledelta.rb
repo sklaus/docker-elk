@@ -9,6 +9,7 @@ class LogStash::Filters::SimpleDelta < LogStash::Filters::Base
   milestone 1
 
   config :input_field, :validate => :string
+  config :inputfilter_field, :validate => :string
   config :output_field, :validate => :string
 
   public
@@ -25,13 +26,13 @@ class LogStash::Filters::SimpleDelta < LogStash::Filters::Base
   public
   def filter(event)
 
-     if !@lastEvent.nil? 
+     if !@lastEvent.@inputfilter_field.nil? 
        event[@output_field] = 
-        (event[@input_field].to_f) - (@lastEvent[@input_field]).to_f       
+        (event[@input_field].to_f) - (@lastEvent.@inputfilter_field[@input_field]).to_f       
      end
 
      # remember event for next time
-     @lastEvent = event
+     @lastEvent.@inputfilter_field = event
        
   end # def filter
 
