@@ -26,13 +26,13 @@ class LogStash::Filters::SimpleDelta < LogStash::Filters::Base
   public
   def filter(event)
 
-     if !@lastEvent.@inputfilter_field.nil? 
+     if !@lastEvent_@inputfilter_field.nil? 
        event[@output_field] = 
-        (event[@input_field].to_f) - (@lastEvent.@inputfilter_field[@input_field]).to_f       
+        (event[@input_field].to_f) - (@lastEvent_@inputfilter_field[@input_field]).to_f       
      end
 
      # remember event for next time
-     @lastEvent.@inputfilter_field = event
+     @lastEvent_@inputfilter_field = event
        
   end # def filter
 
