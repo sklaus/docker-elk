@@ -9,13 +9,15 @@ class LogStash::Filters::SimpleDelta < LogStash::Filters::Base
   milestone 1
 
   config :input_field, :validate => :string
-  config :inputfilter_field, :validate => :string
+  config :filterkey_field, :validate => :string
   config :output_field, :validate => :string
 
   public
   def initialize(config = {})
     super
 
+    # this filter needs to keep state based on a key field
+    @lastEvents = Hash.new
   end # def initialize
 
   public
@@ -26,13 +28,13 @@ class LogStash::Filters::SimpleDelta < LogStash::Filters::Base
   public
   def filter(event)
 
-     if !@lastEvent[@inputfilter_field].nil? 
+     if !@lastEvents[@filterkey_field].nil? 
        event[@output_field] = 
-        (event[@input_field].to_f) - (@lastEvent[@inputfilter_field][@input_field]).to_f       
+        (event[@input_field].to_f) - (@lastEvents[@filterkey_field][@input_field]).to_f       
      end
 
      # remember event for next time
-     @lastEvent[@inputfilter_field] = event
+     @lastEvents[@filterkey_field] = event
        
   end # def filter
 
