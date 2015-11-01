@@ -1,3 +1,4 @@
 FROM elasticsearch:latest
 
-RUN plugin -i elasticsearch/marvel/latest
+# currently there is an issue building with this option
+#RUN plugin -i elasticsearch/marvel/latest
