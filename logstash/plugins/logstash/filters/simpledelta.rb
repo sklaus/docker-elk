@@ -11,7 +11,6 @@ class LogStash::Filters::SimpleDelta < LogStash::Filters::Base
   config :input_field, :validate => :string
   config :filterkey_field, :validate => :string
   config :output_field, :validate => :string
-  config :last_field, :validate => :string
 
 
   public
@@ -32,8 +31,7 @@ class LogStash::Filters::SimpleDelta < LogStash::Filters::Base
 
      if !@lastEvents[event[@filterkey_field]].nil? 
        event[@output_field] = 
-        (event[@input_field].to_f) - (@lastEvents[event[@filterkey_field]]).to_f
-        event[@last_field] = @lastEvents[event[@filterkey_field]].to_f     
+        (event[@input_field].to_f) - (@lastEvents[event[@filterkey_field]]).to_f   
      end
 
      # remember event for next time
