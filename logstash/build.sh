@@ -3,7 +3,7 @@
 set -e
 
 REGISTRY=10.0.0.5:6000
-NAME=elasticsearch
+NAME=logstash
 #TAG=$(git rev-parse HEAD)
 TAG=1111
 
