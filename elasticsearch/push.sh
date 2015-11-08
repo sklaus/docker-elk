@@ -3,7 +3,7 @@
 set -e
 
 REGISTRY=${REGISTRY:-10.0.0.5:6000}
-NAME=kibana
+NAME=elasticsearch
 
 echo "Pushing docker for $REGISTRY/$NAME"
 
