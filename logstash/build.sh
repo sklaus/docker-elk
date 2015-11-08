@@ -2,7 +2,7 @@
 
 set -e
 
-REGISTRY=10.0.0.5:6000
+REGISTRY=${REGISTRY:-10.0.0.5:6000}
 NAME=logstash
 #TAG=$(git rev-parse HEAD)
 TAG=1112
