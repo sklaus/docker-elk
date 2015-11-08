@@ -7,4 +7,4 @@ NAME=kibana
 
 echo "Pushing docker for $REGISTRY/$NAME"
 
-docker push $REGISTRY/$NAME
+sudo docker push $REGISTRY/$NAME
