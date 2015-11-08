@@ -1,11 +1,10 @@
 elasticsearch:
-  #image: elasticsearch:latest
-  #command: elasticsearch -Des.network.host=0.0.0.0
-  build: elasticsearch/
+  image: 10.0.0.5:6000/elasticsearch:1112
+  command: elasticsearch -Des.network.host=0.0.0.0
   ports:
     - "9200:9200"
 logstash:
-  image: logstash:2.0.0
+  image: 10.0.0.5:6000/logstash:1112
   environment:
     - RUBYLIB=/mnt
   command: logstash -f /etc/logstash/conf.d/logstash.conf
@@ -19,7 +18,7 @@ logstash:
   links:
     - elasticsearch
 kibana:
-  build: kibana/
+  image: 10.0.0.5:6000/kibana:1112
   volumes:
     - ./kibana/config/kibana.yml:/opt/kibana/config/kibana.yml
   ports:

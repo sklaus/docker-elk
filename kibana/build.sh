@@ -5,7 +5,7 @@ set -e
 REGISTRY=10.0.0.5:6000
 NAME=kibana
 #TAG=$(git rev-parse HEAD)
-TAG=1111
+TAG=1112
 
 echo "Building docker for $REGISTRY/$NAME:$TAG"
 
